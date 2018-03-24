@@ -5,7 +5,8 @@
         <list></list>
     </div>
     <div class="main">
-
+        <Message></Message>
+        <Chatarea></Chatarea>
     </div>
 </div>
 </template>
@@ -13,24 +14,28 @@
 <script>
 import card from './components/card';
 import list from './components/list';
+import Message from './components/Message';
+import Chatarea from './components/Chatarea';
 
 export default {
   name: 'App',
   components: {
     card,
-    list
+    list,
+    Message,
+    Chatarea
   }
 }
 </script>
 
-<style scoped>
-    #app {
-        margin: 20px auto;
-        width: 800px;
-        height: 600px;
-        overflow: hidden;
-        border-radius: 3px;
-    }
+<style lang="less" scoped>
+#app {
+    margin: 20px auto;
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 3px;
+}
     .sidebar, .main {
         height: 100%;
     }
@@ -52,6 +57,6 @@ export default {
         left: 0;
     }
     .message {
-        height: calc(100% - 160px);
+        height: ~'calc(100% - 160px)';
     }
 </style>

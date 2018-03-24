@@ -4,7 +4,7 @@
       <!-- <img class="avatar" :src="$store.state.user.img" :alt="$store.state.user.img"> -->
       <!-- <p class="name">{{$store.state.user.name}}</p> -->
       <img src="./../assets/logo.png" alt="" class="avatar">
-      <p class="name">youngyang</p>
+      <p class="name">{{$store.state.user.name}}</p>
   </header>
   <footer>
       <input class="search" type="text" placeholder="search user...">
@@ -12,21 +12,17 @@
 </div>
 </template>
 <script>
-// import srore from '../store';
+import store from '../store';
 
-// export default {
-  
-// }
+export default {
+  name: 'card',
+  store
+}
 </script>
-<style scoped>
-    .card {
-        padding: 12px;
-        border-bottom: solid 1px #24272C;
-    }
-    header > .avatar{
-        width: 40px;
-        height: 40px;
-    }
+<style scoped lang="less">
+.card {
+    padding: 12px;
+    border-bottom: solid 1px #24272C;
     footer {
         margin-top: 10px;
     }
@@ -34,6 +30,8 @@
         vertical-align: middle;
     }
     .avatar {
+        width: 40px;
+        height: 40px;
         border-radius: 2px;
     }
     .name {
@@ -42,7 +40,6 @@
         font-size: 16px;
     }
     .search {
-        width: 150px;
         padding: 0 10px;
         width: 100%;
         font-size: 12px;
@@ -54,4 +51,5 @@
         outline: none;
         background-color: #26292E;
     }
+}
 </style>
