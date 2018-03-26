@@ -1,14 +1,10 @@
 <template>
 <div class="list">
     <ul>
-        <li v-for="item in sessions" :class="{ active: item.id === currentSessionId }">
-            <img class="avatar"  :src="item.user.img">
+        <li v-for="item in sessions" :class="{ active: item.id === currentSessionId }" @click="selectSession(item.id)">
+            <img class="avatar"  src="../assets/1.jpg">
             <p class="name">{{item.user.name}}</p>
         </li>
-        <!-- <li >
-            <img src="./../assets/logo.png" alt="" class="avatar">
-            <p class="name">{{item.user.name}}</p>
-        </li> -->
     </ul>
 </div>
 </template>
@@ -17,9 +13,16 @@ import store from '../store';
 
 export default {
     name: 'list',
+    methods: {
+        selectSession (id){
+            store.commit('filterMsg', id)
+        }
+    },
     computed: {
         sessions: function(){
-            return this.$store.state.sessions
+            return this.$store.state.sessions.filter((val)=>{
+                return val.user.name.includes(this.$store.state.filterKey)
+            })
         },
         currentSessionId: function(){
             return this.$store.state.currentSessionId
@@ -47,6 +50,8 @@ export default {
         vertical-align: middle;
     }
     .avatar {
+        width: 20px;
+        height: 20px;
         border-radius: 2px;
     }
     .name {

@@ -1,22 +1,11 @@
 <template>
 <div class="message">
-    <!-- <ul v-if="session">
-        <li v-for="(item, index) in session">
-            <p class="time">
-                <span>{{ item[index].messages.date | time }}</span>
-            </p>
-            <div class="main">
-                <img class="avatar" width="30" height="30" src="./../assets/3.jpg"/>
-                <div class="text">{{ item[index].messages.content }}</div>
-            </div>
-        </li>
-    </ul> -->
     <ul v-if="session">
-        <li v-for="(item, index) in messages">
+        <li v-for="(item, index) in currentSession[0].messages">
             <p class="time">
                 <span>{{ item.date }}</span>
             </p>
-            <div class="main">
+            <div class="main" :class="{self: item.self}">
                 <img class="avatar" width="30" height="30" src="./../assets/3.jpg"/>
                 <div class="text">{{ item.content }}</div>
             </div>
@@ -33,8 +22,10 @@ export default {
         session: function(){
             return this.$store.state.sessions
         },
-        messages: function(){
-            return this.$store.state.sessions[0].messages
+        currentSession: function(){
+            return this.$store.state.sessions.filter((val, index, arr)=>{
+                return val.id === this.$store.state.currentSessionId
+            })
         }
     },
     store

@@ -7,7 +7,7 @@
       <p class="name">{{$store.state.user.name}}</p>
   </header>
   <footer>
-      <input class="search" type="text" placeholder="search user...">
+      <input class="search" type="text" placeholder="search user..." @keyup="onKeyup">
   </footer>
 </div>
 </template>
@@ -16,6 +16,11 @@ import store from '../store';
 
 export default {
   name: 'card',
+  methods: {
+      onKeyup (e) {
+          store.commit('filterPeople', e.target.value)
+      }
+  },
   store
 }
 </script>

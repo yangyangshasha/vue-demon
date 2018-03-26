@@ -1,13 +1,26 @@
 <template>
 <div class="text1">
-    <textarea placeholder="按 Ctrl + Enter 发送"></textarea>
+    <textarea placeholder="按 Ctrl + Enter 发送" v-model="content" @keyup="onKeyup"></textarea>
 </div>
 </template>
 <script>
 import store from './../store';
 
 export default {
-  name: 'text',
+  name: 'Chatarea',
+  data () {
+      return {
+          content: ''
+      }
+  },
+  methods: {
+      onKeyup (e) {
+          if(e.ctrlKey && e.keyCode === 13 && this.content.length){
+              store.commit('sendMsg', this.content)
+              this.content = ''
+          }
+      }
+  },
   store
 }
 </script>
