@@ -6,7 +6,7 @@
                 <span>{{ item.date }}</span>
             </p>
             <div class="main" :class="{self: item.self}">
-                <img class="avatar" width="30" height="30" src="./../assets/3.jpg"/>
+                <img class="avatar" width="30" height="30" :src="item.self ? $store.state.user.img :currentSession[0].user.img"/>
                 <div class="text">{{ item.content }}</div>
             </div>
         </li>

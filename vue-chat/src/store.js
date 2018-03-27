@@ -7,7 +7,7 @@ const state = {
     // 当前用户
     user: {
         name: 'coffce',
-        img: './assets/3.jpg'
+        img: '../../static/1.jpg'
     },
     // 会话列表
     sessions: [
@@ -15,7 +15,7 @@ const state = {
             id: 1,
             user: {
                 name: '示例介绍',
-                img: './assets/1.jpg'
+                img: '../../static/2.png'
             },
             messages: [
                 {
@@ -31,7 +31,7 @@ const state = {
             id: 2,
             user: {
                 name: 'webpack',
-                img: './assets/2.png'
+                img: '../../static/3.jpg'
             },
             messages: [
                 {

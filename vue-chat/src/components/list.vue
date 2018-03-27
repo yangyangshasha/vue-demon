@@ -2,7 +2,7 @@
 <div class="list">
     <ul>
         <li v-for="item in sessions" :class="{ active: item.id === currentSessionId }" @click="selectSession(item.id)">
-            <img class="avatar"  src="../assets/1.jpg">
+            <img class="avatar"  :src="item.user.img">
             <p class="name">{{item.user.name}}</p>
         </li>
     </ul>
@@ -13,6 +13,12 @@ import store from '../store';
 
 export default {
     name: 'list',
+    data () {
+        return {
+            // imgurl: require('../assets/2.png'),
+            // imgurl2: '../../static/2.png'
+        }
+    },
     methods: {
         selectSession (id){
             store.commit('filterMsg', id)

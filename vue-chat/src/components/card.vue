@@ -1,9 +1,7 @@
 <template>
 <div class="card">
   <header>
-      <!-- <img class="avatar" :src="$store.state.user.img" :alt="$store.state.user.img"> -->
-      <!-- <p class="name">{{$store.state.user.name}}</p> -->
-      <img src="./../assets/logo.png" alt="" class="avatar">
+      <img :src="avatarSrc" alt="" class="avatar">
       <p class="name">{{$store.state.user.name}}</p>
   </header>
   <footer>
@@ -16,6 +14,11 @@ import store from '../store';
 
 export default {
   name: 'card',
+  computed: {
+      avatarSrc: function(){
+          return this.$store.state.user.img
+      }
+  },
   methods: {
       onKeyup (e) {
           store.commit('filterPeople', e.target.value)
